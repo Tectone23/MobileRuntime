@@ -1,0 +1,13 @@
+{
+    "runtime": {
+        "1": {
+            "name": "Example version",
+            "changelog":[
+                "Some stuff was added",
+                "Some stuff was removed"
+            ],
+            "size": 40,
+            "url": "https://gist.githubusercontent.com/HUSKI3/fe79cb48ea410e391148c9c24f454517/raw/3dbfaca0c7545ad8232ab58b2da7158e446fbc4d/runtime.py"
+        }
+    }
+}
