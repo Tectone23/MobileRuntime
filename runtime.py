@@ -41,24 +41,33 @@ def stop_thread(thread):
 
 import types
 
-func_template = '''\
-out = None
-def returns(arg):
-    out = arg
+wrap = '''\
+{code}
+try:
+    {name}()
+except Exception as e:
+    print(e)
+'''
 
+func_template = '''\
 def {name}(args):
 {body}
-{name}()\
 '''
 
 def build(name, code, local={}):
     builtins = {
         "returner":""
     }
-    code_obj = compile(func_template.format(
-            name = name,
-            body = indent(code, 1)
-        ),
+    final_string = wrap.format(
+            code = 
+            func_template.format(
+                name = name,
+                body = indent(code, 1)
+            ),
+            name = name
+        )
+    code_obj = compile(
+        final_string,
         '<string>',
         'exec'
     )
@@ -84,13 +93,3 @@ def mainTextCode(name, code, args, output):
         return return_store[0]
     else:
         return return_store
-# Testing:
-#
-# mainTextCode(
-#     "cool",
-# """\
-# print(code_obj)
-# print('Hey')
-# return 2""",
-#     sys.stdout
-# )
